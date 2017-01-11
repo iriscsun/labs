@@ -8,21 +8,28 @@ output: html_document
 ```{r L1, echo=FALSE, warning=FALSE, message=FALSE}
 #The dataset we are exploring has influenza and pneumonia deaths on a state and national level, over time.
 #https://www.healthdata.gov/dataset/deaths-pnuemonia-and-influneza-and-all-deaths-state-and-region-national-center-health
+install.packages("ggplot2")
+install.packages("knitr")
+install.packages("dplyr")
 
 #We will be requiring knitr, dplyr, and ggplot2
-
+require(dplyr)
+require(knitr)
+require(ggplot2)
 
 
 #Read in the dataset
-
+my.data <- read.csv("flu_deaths.csv")
 
 
 #Handle NA values
-
+my.data[is.na(my.data)] <- 0
 
 
 
 #Create one summary table and one plot about two different aspects of the dataset. Include a small paragraph explaining what each table/plot is showing.
+my.summary <- filter(my.data, geoid == "National", season == "2015-16", season == "2016-17") %>%
+              select(geoid, season, Deaths.from.pneumonia.and.influenza, All.Deaths)
 
 ```
 

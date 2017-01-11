@@ -34,7 +34,7 @@ deaths_summary <- filter(deaths, geoid == "State", season == "2016-17") %>%
                   select(State, num_deaths) %>%
                   arrange(desc(num_deaths))
 
-kable(deaths_summary)
+kable(deaths_summary) #this makes the table look nais
 
 ```
 
@@ -51,6 +51,6 @@ deaths_plot <- filter(deaths, geoid == "National", age == "65 years and older") 
                          percent_flu = (flu_deaths / total_deaths * 100))
 
 p <- ggplot(deaths_plot, aes(season, percent_flu))
-p + geom_point()
+p + geom_point() #need this to make graph show up in markdown
 
 ```
